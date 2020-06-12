@@ -30,6 +30,7 @@ public class CalculatorBean implements CalculatorBeanLocal {
         res = input.split(" ");
         return res;
     }
+    public enum Priority { LOW, NORMAL, HIGH, SEVERE }
     
     @Override
     public String[] getAnswerOld(){
@@ -46,20 +47,95 @@ public class CalculatorBean implements CalculatorBeanLocal {
         switch(values[1]){
             case "+":
                 result = (Double.parseDouble(values[0]) + Double.parseDouble(values[2]));
+                
+                switch(values[3]){
+                    case "+":
+                        
+                        result =(result + Double.parseDouble(values[4]));
+                        break;
+                    case "-":
+                       
+                        result = (result - Double.parseDouble(values[4]));
+                        break;
+                    case "x":
+                        
+                        result = (result * Double.parseDouble(values[4]));
+                        break;
+                    case "/":
+                        
+                        result = (result / Double.parseDouble(values[4]));
+                        break;
+                    default:
+                        result = 0;
+                        break;
+                }
+                
                 break;
             case "-":
                 result = (Double.parseDouble(values[0]) - Double.parseDouble(values[2]));
+                switch(values[3]){
+                    case "+":
+                        result =(result + Double.parseDouble(values[4]));
+                        break;
+                    case "-":
+                        result = (result - Double.parseDouble(values[4]));
+                        break;
+                    case "x":
+                        result = (result * Double.parseDouble(values[4]));
+                        break;
+                    case "/":
+                        result = (result / Double.parseDouble(values[4]));
+                        break;
+                    default:
+                        result = 0;
+                        break;
+                }
                 break;
             case "x":
                 result = (Double.parseDouble(values[0]) * Double.parseDouble(values[2]));
+                switch(values[3]){
+                    case "+":
+                        result =(result + Double.parseDouble(values[4]));
+                        break;
+                    case "-":
+                        result = (result - Double.parseDouble(values[4]));
+                        break;
+                    case "x":
+                        result = (result * Double.parseDouble(values[4]));
+                        break;
+                    case "/":
+                        result = (result / Double.parseDouble(values[4]));
+                        break;
+                    default:
+                        result = 0;
+                        break;
+                }
                 break;
             case "/":
                 result = (Double.parseDouble(values[0]) / Double.parseDouble(values[2]));
+                switch(values[3]){
+                    case "+":
+                        result =(result + Double.parseDouble(values[4]));
+                        break;
+                    case "-":
+                        result = (result - Double.parseDouble(values[4]));
+                        break;
+                    case "x":
+                        result = (result * Double.parseDouble(values[4]));
+                        break;
+                    case "/":
+                        result = (result / Double.parseDouble(values[4]));
+                        break;
+                    default:
+                        result = 0;
+                        break;
+                }
                 break;
             default:
                 result = 0;
                 break;
         }
+        
         add_calcOld(input);
         add_answerOld(twoDigits.format(result));
         return twoDigits.format(result);

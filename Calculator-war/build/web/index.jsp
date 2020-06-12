@@ -33,31 +33,7 @@
                     <div class="column mainDisplay">
                         <div class="card" style="padding: 0;">
                             <div class="row">
-                                <div class="column remainingDisplay" id="history">
-                                    <h3 style="margin: 0; margin-bottom: 20px;">History</h3>
-                                    <div id="historyPanel">
-                                        <%
-                                            String[] answerOld = (String[])request.getSession().getAttribute("answerOld");
-                                            String[] calcOld = (String[])request.getSession().getAttribute("calcOld");
-                                            int length;
-                                            if(answerOld == null) {
-                                                out.print("<p>History</p>");
-                                            }
-                                            else {
-                                                    length = answerOld.length;
-                                                    for (int i = 1; i <= length; ++i) {
-                                                        out.print("<div class='historyItem' onclick='appendText(");
-                                                        out.print(answerOld[length - i]);
-                                                        out.print(")'>\n<p style='margin: 0; cursor: default;'>\n");
-                                                        out.print(calcOld[length - i]);
-                                                        out.print("</p><br/>\n<p style='font-size: 20px; margin: 0; cursor: default;'>");
-                                                        out.print(answerOld[length - i]);
-                                                        out.print("</p>\n</div>\n");
-                                                    }
-                                                }
-                                        %>
-                                    </div>
-                                </div>
+                               
                                 <div class="column mainDisplay" id="calcPanel">
                                     <div class="card" style="padding: 0; background-color: black; color: white;">
                                         <form class="full" method="post" action="Calculator">
